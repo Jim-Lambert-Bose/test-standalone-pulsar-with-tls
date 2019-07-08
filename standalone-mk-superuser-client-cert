@@ -1,0 +1,4 @@
+#!/bin/bash
+# make a cert/key for the superUserRoles=standalone-pulsar-admin
+echo superuser key/cert: ./secrets/superuser-cert.pem  ./secrets/superuser-key.pem 
+docker exec -it standalone-pulsar mkcert --cert-file ./secrets/superuser-cert.pem --key-file ./secrets/superuser-key.pem --client standalone-pulsar-admin

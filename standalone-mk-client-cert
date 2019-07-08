@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# make a client cert for stanalone pulsar
+
+echo new key/cert: ./secrets/$1-cert.pem  ./secrets/$1-key.pem 
+docker exec -it standalone-pulsar mkcert --cert-file ./secrets/$1-cert.pem --key-file ./secrets/$1-key.pem --client $1
+

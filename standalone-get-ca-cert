@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# get the stanalone pulsar CA cert
+
+echo new key/cert: ./secrets/$1-cert.pem  ./secrets/$1-key.pem ./secrets/rootCA.pem
+docker exec -it standalone-pulsar cp /pulsar/rootCA.pem /pulsar/secrets/
