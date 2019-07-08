@@ -1,5 +1,7 @@
 # standalone-pulsar-with-tls
-Just an extention to the apachepulsar/pulsar:2.3.1 container that enables TLS and client authentication.
+Just an extention to the apachepulsar/pulsar:2.3.1 container that enables TLS and client authentication + authorization.
+
+**Currently, authentication and authorization are not working.**
 
 See also, the standalone-pulsar repo: https://github.com/apache/pulsar/tree/master/docker
 
