@@ -24,6 +24,24 @@ RUN mkcert --cert-file proxy-cert.pem --key-file proxy-key.pem --client standalo
 # make a superuser cert/key for the pulsar clients, when used within the container
 RUN mkcert --cert-file client-cert.pem --key-file client-key.pem --client standalone-pulsar-admin
 
+
+## tmp to use openssl certs for test
+WORKDIR /pulsar
+COPY gen-openssl*.sh /pulsar/
+RUN ls -ltra
+RUN touch /root/.rnd
+RUN /bin/bash -c ./gen-openssl-ca.sh 
+RUN ./gen-openssl-server-cert.sh
+
+# generate an admin cert with a CN in the subject
+#RUN ./gen-openssl-admin-cert-bad.sh  
+
+# generate an admin cert with a SAN and no CN
+RUN ./gen-openssl-admin-cert.sh
+
+
+# COPY *.pem /pulsar/
+
 ENV SERVICE_URL http://127.0.0.1:8080
 EXPOSE 80
 
