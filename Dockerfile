@@ -1,10 +1,11 @@
 FROM apachepulsar/pulsar:2.3.1
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* && apt-get clean && apt-get update
-RUN apt install -y less lsof libnss3-tools golang jq
+RUN apt install -y less lsof libnss3-tools golang jq emacs-nox
 
 # broker.conf and proxy.conf with TLS enabled
 COPY *.conf /pulsar/conf/
+COPY *.yml /pulsar/conf/
 
 # mkcert manages the CA and all the cert/keys it creates
 RUN go get -u github.com/FiloSottile/mkcert && $(go env GOPATH)/bin/mkcert
