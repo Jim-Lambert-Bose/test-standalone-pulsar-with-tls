@@ -33,10 +33,10 @@ RUN touch /root/.rnd
 RUN /bin/bash -c ./gen-openssl-ca.sh 
 RUN ./gen-openssl-server-cert.sh
 
-# generate an admin cert with a CN in the subject
+# generate an admin cert with a SAN and no CN
 #RUN ./gen-openssl-admin-cert-bad.sh  
 
-# generate an admin cert with a SAN and no CN
+# generate an admin cert with a CN in the subject
 RUN ./gen-openssl-admin-cert.sh
 
 
